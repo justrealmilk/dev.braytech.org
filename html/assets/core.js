@@ -42,7 +42,7 @@ var apiKey = {
 var timed = false;
 var index = {
 	"s": false,
-	"d": "milestones"
+	"d": "challenges"
 };
 
 window.addEventListener("scroll", () => {
@@ -139,7 +139,7 @@ domain.inject = () => {
 domain.status = () => {
 	ga('set', 'page', document.location.pathname);
 	ga('send', 'pageview');
-
+	$("html").addClass("stateChange");
 	var nn = domain.state().d;
 			nn = nn.replace(/[_]/g, " ");
 	document.title = nn.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
@@ -148,9 +148,10 @@ domain.status = () => {
 
 domain.rim = function(g) {
 	domain[g.replace(/[^a-zA-Z0-9_]/g, "")]();
+	$("html").removeClass("stateChange");
 
 	$(`header ul li a`).removeClass("active");
-	if (domain.state().d == "milestones") {
+	if (domain.state().d == "challenges") {
 		$(`header ul li a[href="/"]`).addClass("active");
 	}
 	else {

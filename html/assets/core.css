@@ -109,7 +109,11 @@ em {
 
 p {
   line-height: 1.4;
-  margin: 1rem 0;
+  margin: 0 0 0.4rem;
+}
+
+p:last-of-type {
+  margin: 0;
 }
 
 button {
@@ -123,20 +127,6 @@ button {
   height: 2rem;
   display: flex;
   align-items: center;
-}
-
-.cf:before,
-.cf:after {
-	content: ' ';
-	display: table;
-}
-
-.cf:after {
-	clear: both;
-}
-
-.di {
-	clear: both;
 }
 
 .image {
@@ -436,11 +426,51 @@ html.loading .spinner {
   }
 }
 
-
 main {
   display: flex;
   flex-flow: row wrap;
   padding-top: 5rem;
+}
+
+.loadingScreen {
+  background-color: #e93421;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10000;
+  pointer-events: none;
+  will-change: opacity, transform;
+  opacity: 0;
+  transform: scale(2);
+  transition: opacity 1s, transform 1.4s cubic-bezier(0, 0.98, 0.52, 1);
+}
+
+.loadingScreen::before {
+  content: "\e96b";
+  font-family: 'destiny' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #fff;
+  font-size: 40vh;
+  position: fixed;
+  top: calc(50% - 20vh);
+  left: calc(50% - 20vh);
+  pointer-events: none;
+}
+
+html.stateChange .loadingScreen {
+  pointer-events: initial;
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 1s, transform 1.4s cubic-bezier(0, 0.98, 0.52, 1);
 }
 
 

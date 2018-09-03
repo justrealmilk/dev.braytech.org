@@ -12,7 +12,7 @@ ob_start('ob_gzhandler');
 // }
 
 ?><!DOCTYPE html>
-<html lang="en" class="loading">
+<html lang="en" class="loading stateChange">
 
 <head>
 	<meta charset="UTF-8" />
@@ -21,8 +21,8 @@ ob_start('ob_gzhandler');
 	<meta name="generator" content="Thomas Chapman with Coffee" />
 	<title>CLOVIS BRAY</title>
 	<link rel="stylesheet" href="/assets/core.css?">
-	<link rel="stylesheet" href="/assets/webfonts/Neue2/style.css">
-	<link rel="stylesheet" href="/assets/webfonts/Destiny/style.css">
+	<link rel="stylesheet" href="/assets/webfonts/neue/style.css">
+	<link rel="stylesheet" href="/assets/webfonts/destiny/style.css">
 	<link rel="icon" type="image/png" href="/assets/favicon-16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/assets/favicon-96.png" sizes="96x96">
@@ -67,11 +67,7 @@ ob_start('ob_gzhandler');
 		<h1><a href="/"><span class="icon-clovis_bray"></span></a></h1>
 		<a class="trigger"></a>
 		<ul>
-			<li><a href="/">Activities</a></li>
-			<li><a href="/xur/">Xûr</a></li>
-			<li><a href="/database/">Database</a></li>
-			<li><a href="/checklists/">Checklists</a></li>
-			<li><a href="/guides/">Guides</a></li>
+			<li><a href="/">Challenges</a></li>
 		</ul>
 	</header>
 
@@ -94,15 +90,15 @@ ob_start('ob_gzhandler');
 		</svg>
 	</div>
 
+	<div class="loadingScreen"></div>
+
 	<main></main>
 
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.4/js.cookie.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
-	<!-- <script src="//cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script> -->
-	<script src="//cdn.rawgit.com/showdownjs/showdown/62270d4a/dist/showdown.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/93/three.min.js"></script>
 	<script src="/assets/three.js/OrbitControls.js"></script>
