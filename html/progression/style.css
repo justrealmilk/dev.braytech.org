@@ -1,0 +1,717 @@
+
+
+.spinner svg polygon {
+  fill: #fff;
+}
+
+header h1,
+header a {
+  color: #fff;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1b1e2c;
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  color: #fff;
+}
+
+.frame h3 {
+  margin: 0 0 2rem;
+  padding: 0 0 0.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.frame h3:nth-child(n+2) {
+  margin: 2rem 0 2rem;
+}
+
+.frame h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  margin: 3rem 0 2rem;
+}
+
+.mobileOnly {
+  display: none;
+}
+
+.results ul li {
+  position: relative;
+  height: 38px;
+  margin: 0 0 3px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0);
+  font-size: 18px;
+  cursor: default;
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+.results ul li::before {
+  content: " ";
+  width: 32px;
+  height: 32px;
+  margin: 0 21px 0 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color .25s;
+}
+
+.results ul li::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+}
+
+.results ul li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+.results ul li:hover::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.results ul li:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+
+
+
+#players,
+#characters,
+#character {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+.frame.hasManifest #players {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.frame.hasProfile #characters,
+.frame.hasProfile #character {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+
+
+
+#players {
+  position: absolute;
+  top: 7rem;
+  left: 5rem;
+  width: 300px;
+}
+
+#characters {
+  position: absolute;
+  top: 7rem;
+  left: calc(5rem + 300px + 3rem);
+  width: 474px;
+}
+
+#character {
+  position: absolute;
+  top: 7rem;
+  left: calc(5rem + 300px + 3rem + 474px + 3rem);
+  width: calc(100% - (5rem + 300px + 3rem + 474px + 3rem) - 5rem);
+}
+
+
+
+
+
+
+#players .results ul li::before {
+  font-family: 'destiny' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 24px;
+}
+
+#players .results ul .xbox::before {
+  content: "\e999";
+}
+
+#players .results ul .playstation::before {
+  content: "\e998";
+}
+
+#players .results ul .pc::before {
+  content: "\e99e";
+}
+
+
+
+
+#characters .results ul li {
+  display: block;
+  height: 0;
+  padding-bottom: calc(96 / 474 * 100%);
+  margin: 0 0 16px;
+  color: #fff;
+}
+
+#characters .results ul li::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  pointer-events: none;
+  background-color: initial;
+  margin: initial;
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0);
+  transition: background-color .25s, box-shadow .25s;
+}
+
+#characters .results ul li:hover::before {
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+#characters .results ul .active::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+#characters .results ul li .image.emblem {
+  background-size: cover;
+}
+
+#characters .results ul li .image.emblem.missing {
+  width: calc(96 / 474 * 100% - 50px);
+  height: calc(100% - 50px);
+  top: 18px;
+  left: 18px;
+  background-size: contain;
+}
+
+#characters .results ul li:hover .image.emblem:not(.missing) {
+  opacity: 0.8;
+}
+
+#characters .results ul li .displayName {
+  position: absolute;
+  left: 88px;
+  top: 15px;
+  font-size: 27px;
+}
+
+#characters .results ul li .class {
+  position: absolute;
+  left: 88px;
+  top: 52px;
+  font-size: 16px;
+  opacity: 0.4;
+}
+
+#characters .results ul li .light {
+  position: absolute;
+  right: 12px;
+  top: 13px;
+  font-size: 34px;
+  font-weight: 500;
+  line-height: 1;
+  color: #2ed1c9;
+}
+
+#characters .results ul li .light::before {
+  content: "\e973";
+  position: absolute;
+  top: 4px;
+  left: -16px;
+  font-family: 'destiny' !important;
+  speak: none;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#characters .results ul li .level {
+  position: absolute;
+  right: 12px;
+  top: 55px;
+  font-size: 18px;
+}
+
+#characters .results ul li .progress {
+  position: absolute;
+  left: 2px;
+  bottom: 2px;
+  height: 12px;
+  width: calc(100% - 4px);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#characters .results ul li .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #5aa366;
+}
+
+#characters .results ul li .progress .bar.capped {
+  background-color: #b88917;
+}
+
+
+
+
+
+
+
+#character .list li {
+  position: relative;
+  padding: 0 0 0 50%;
+  margin: 0 0 0.4rem;
+  line-height: 1.4;
+}
+
+#character .list li::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0.4;
+}
+
+#character .accountSummary,
+#character .characterSummary {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#character .c-1-1 {
+  flex-basis: 100%;
+}
+
+#character .c-1-2 {
+  flex-basis: 50%;
+}
+
+#character .c-1-3 {
+  flex-basis: calc(100% / 3 - 2rem);
+}
+
+#list-region_chests {
+  margin: 0 3rem;
+}
+
+#character .accountSummary .totals {
+  height: 17rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  position: relative;
+}
+
+#character .accountSummary .totals::before {
+  content: " ";
+  position: absolute;
+  top: 34%;
+  left: 20%;
+  height: 5rem;
+  width: 60%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#character .accountSummary .totals div {
+  flex-basis: 100%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+#character .accountSummary .totals .intScore {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+#character .accountSummary .totals .textScore {
+  margin: 1rem 0 0;
+  opacity: 0.4;
+}
+
+#character .accountSummary .totals .textTime {
+  margin: 3rem 0 0;
+}
+
+#character .checks li {
+  position: relative;
+  padding: 0;
+  margin: 0 0 0.8rem;
+  line-height: 1.4;
+  display: flex;
+}
+
+#character .checks li .completed {
+  position: relative;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin: 0.3rem 1rem 0 3px;
+}
+
+#character .checks li .completed::before {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+#character .checks li .completed.true {  
+  background-color: #78ba82;
+}
+
+#character .checks li .completed.true + .text {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#character .accountSummary .moments .checks {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#character .accountSummary .moments .checks li {
+  flex-basis: calc(100% / 3);
+  margin: 0 0 0.4rem;
+}
+
+
+
+#character .accountSummary .seals {
+  display: flex;
+  flex-flow: row wrap;
+  align-content: center;
+  position: relative;
+}
+
+#character .accountSummary .seals .seal {
+  flex-basis: 100%;
+  background-color: #7b3274;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 8px;
+}
+
+#character .accountSummary .seals .seal .title {
+  flex-basis: 70%;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 0 7px 10px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#character .accountSummary .seals .seal .fraction {
+  flex-basis: calc(30% - 20px);
+  text-align: right;
+  font-weight: 500;
+  font-size: 14px;
+  padding: 12px 10px 7px 0;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#character .accountSummary .seals .seal .progress {
+  flex-basis: 100%;
+  margin: 0 2px 2px;
+  position: relative;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#character .accountSummary .seals .seal .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #fdfdfd;
+}
+
+
+
+
+#character .characterSummary .emblemIcon .image {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 0 3rem;
+}
+
+
+
+
+#character .characterSummary .checklists .header {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 1rem;
+}
+
+#character .characterSummary .checklists .header .icon {
+  flex-basis: 3rem;
+  font-size: 32px;
+}
+
+#character .characterSummary .checklists .header .title {
+  flex-basis: calc(100% - 3rem);
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+}
+
+#character .characterSummary .checklists .header .description {
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  margin: 1rem 0 0;
+  line-height: 1.4;
+  min-height: 2.4rem;
+}
+
+#character .characterSummary .checklists .progress {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 2rem;
+}
+
+#character .characterSummary .checklists .progress .title {
+  flex-basis: 70%;
+  font-size: 14px;
+  padding: 8px 0 8px 10px;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+#character .characterSummary .checklists .progress .fraction {
+  flex-basis: calc(30% - 20px);
+  text-align: right;
+  font-size: 14px;
+  padding: 8px 10px 8px 0;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+#character .characterSummary .checklists .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5aa366;
+}
+
+#character .characterSummary .checklists .checks li {
+  font-size: 14px;
+}
+
+#character .characterSummary .checklists .checks li .completed {
+  margin: 5px 1rem 0 3px;
+}
+
+#character .characterSummary .checklists .checks.single-line li {
+  align-items: center;
+}
+
+#character .characterSummary .checklists .checks.single-line li .completed {
+  margin: 0 1rem 0 3px;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+
+header {
+  width: calc(100% - 4rem);
+  padding: 0 2rem;
+}
+
+.frame {  
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#players,
+#characters,
+#character {
+  position: relative;
+  top: initial;
+  left: initial;
+  width: calc(100% - 4rem);
+  margin: 3rem 2rem 2rem;
+}
+
+#players,
+#characters {
+  flex-basis: calc(50% - 3rem);
+}
+
+#players {
+  margin: 7rem 1rem 0 2rem;
+}
+
+#characters {
+  margin: 7rem 2rem 0 1rem;
+}
+
+
+
+
+
+#characters .results ul li .image.emblem.missing {
+  width: calc(96 / 474 * 100% - 37px);
+  height: calc(100% - 35px);
+  top: 14px;
+  left: 14px;
+}
+
+#characters .results ul li .displayName {
+  left: 20%;
+  top: 15%;
+  font-size: 18px;
+}
+
+#characters .results ul li .class {
+  left: 20%;
+  top: 54%;
+  font-size: 13px;
+}
+
+#characters .results ul li .light {
+  top: 10%;
+  right: 2%;
+  font-size: 28px;
+}
+
+#characters .results ul li .light::before {
+  font-size: 11px;
+  left: -12px;
+}
+
+#characters .results ul li .level {
+  top: 54%;
+  right: 2%;
+  font-size: 15px;
+}
+
+#characters .results ul li .progress {
+  height: 7px;
+}
+
+
+
+
+
+
+}
+
+@media screen and (max-width: 500px) {
+
+.frame {
+  display: initial;
+}
+
+#players,
+#characters,
+#character {
+  margin: 3rem 2rem 2rem;
+  flex-basis: initial;
+}
+
+#players {
+  margin: 7rem 2rem 2rem;
+}
+
+#character .accountSummary .c-1-2 {
+  flex-basis: 100%;
+  margin: 0 0 1rem;
+}
+
+#character .characterSummary .c-1-2,
+#character .characterSummary .c-1-3 {
+  flex-basis: 100%;
+  margin: 0 0 1rem;
+}
+
+
+#character .c-1-1.checklistsToggle.mobileOnly {
+  margin: 0 0 2rem;
+  display: block;
+}
+
+#character .characterSummary .checklists {
+  display: none;
+}
+
+#character .characterSummary .checklists.active {
+  display: block;
+}
+
+#character .characterSummary .checklists .header .description {
+  min-height: initial;
+}
+
+
+
+
+
+
+
+
+
+}

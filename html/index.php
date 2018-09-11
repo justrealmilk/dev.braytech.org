@@ -20,9 +20,10 @@ ob_start('ob_gzhandler');
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="generator" content="Thomas Chapman with Coffee" />
 	<title>CLOVIS BRAY</title>
-	<link rel="stylesheet" href="/assets/core.css?">
+	<link rel="stylesheet" href="/assets/core.css">
 	<link rel="stylesheet" href="/assets/webfonts/neue/style.css">
 	<link rel="stylesheet" href="/assets/webfonts/destiny/style.css">
+	<link rel="stylesheet" href="/assets/webfonts/symbols/style.css">
 	<link rel="icon" type="image/png" href="/assets/favicon-16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/assets/favicon-96.png" sizes="96x96">
@@ -64,10 +65,13 @@ ob_start('ob_gzhandler');
 	</svg>
 
 	<header>
-		<h1><a href="/"><span class="icon-clovis_bray"></span></a></h1>
+		<h1><a href="/"><i class="destiny-clovis_bray"></i></a></h1>
 		<a class="trigger"></a>
 		<ul>
-			<li><a href="/">Challenges</a></li>
+			<li><a href="/">Now</a></li>
+			<li><a href="/xur/">Xûr</a></li>
+			<li><a href="/progression/">Progression</a></li>
+			<li><a href="/creators/">Creators</a></li>
 		</ul>
 	</header>
 
@@ -94,13 +98,14 @@ ob_start('ob_gzhandler');
 
 	<main></main>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/list.js/1.5.0/list.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.14/moment-timezone-with-data-2012-2022.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/showdown/1.8.6/showdown.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
-	<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/93/three.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/93/three.min.js"></script>	
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
 	<script src="/assets/three.js/OrbitControls.js"></script>
 	<script src="/assets/three.js/three.tgxloader.js"></script>
 	<script src="/assets/core.js"></script>

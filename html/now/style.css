@@ -1,0 +1,330 @@
+
+
+.spinner svg polygon {
+  fill: #fff;
+}
+
+header h1,
+header a {
+  color: #fff;
+}
+
+.frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #929292;
+  transition: background-color 1.5s;
+}
+
+.frame .hotspot {
+  position: fixed;
+  left: 5rem;
+  top: 10rem;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.frame.hasChallenges .hotspot {
+  opacity: 1;
+}
+
+.frame .hotspot::before {
+  content: "\e97e";
+  position: absolute;
+  top: -4rem;
+  right: -4rem;
+  font-family: 'destiny' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 340px;
+  opacity: 0.1;
+  animation: spin 60s linear infinite;
+}
+
+@keyframes spin { 
+  from { 
+      transform: rotate(0deg); 
+  } to { 
+      transform: rotate(360deg); 
+  }
+}
+
+.frame .hotspot .name {
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.4;
+  margin: 0 0 1rem;
+}
+
+.frame .hotspot .description {
+  margin: 0 0 2rem;
+  max-width: 30rem;
+}
+
+.frame .hotspot .bar {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 0 1rem;
+  max-width: 30rem;
+}
+
+.frame .hotspot .bar .dumbbell {
+  height: 2px;
+  background-color: #fff;
+}
+
+
+
+
+
+
+
+
+.frame .vendors {
+  position: fixed;
+  left: 45rem;
+  top: 7rem;  
+  width: calc(100% - 45rem - 5rem);
+  display: flex;
+  flex-flow: row wrap;
+  color: #fff;
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+.frame.hasChallenges .vendors {
+  opacity: 1;
+}
+
+.vendors .vendor {
+  margin: 0 4rem 3rem 0;
+  position: relative;
+  flex-basis: 20rem;
+  width: 20rem;
+}
+
+.vendors .vendor::before {
+  position: absolute;
+  top: -0.5rem;
+  right: -3rem;
+  font-family: 'destiny' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 180px;
+  opacity: 0.1;
+}
+
+.vendor.spider::before {
+  content: "\e99f";
+}
+
+.vendor.gunsmith::before {
+  content: "\e9a1";
+  top: -1rem;
+}
+
+.vendor.xur::before {
+  content: "\e9a0";
+  top: -2rem;
+}
+
+.vendor .name {
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1.4;
+  margin: 0 0 0.4rem;
+}
+
+.vendor .description {
+  margin: 0 0 1rem;
+  max-width: 20rem;
+  font-size: 0.8rem;
+}
+
+.vendor .items {
+  margin: 2rem 0 1rem;
+  max-width: 20rem;
+}
+
+.vendor .items .item {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0 0 0.4rem 0;
+}
+
+.vendor .items .item:last-child {
+  margin: 0;
+}
+
+.vendor .items .item .icon {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  margin: 0 1rem 0 0;  
+  flex-basis: 36px;
+}
+
+.vendor .items .item .icon .image {
+  box-shadow: inset 0 0 0 2px #d9d9d9;
+}
+
+.vendor .items .item .cost {
+  position: relative;
+  flex-basis: 100%;
+  font-size: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.vendor .items .item .cost .image {
+  position: relative;
+  flex-basis: 14px;
+  width: 14px;
+  height: 14px;
+  margin: 0 4px 0 0;
+}
+
+.vendor .items .item .text {
+  flex-basis: calc(100% - 1rem - 36px);
+  font-size: 0.8rem;
+}
+
+.vendor .items .item .text p {
+  margin: 0 0 0.1rem;
+}
+
+.vendor .items .item .text p:first-child:not(last-child) {
+  font-weight: 500;
+}
+
+.vendor .bar {
+  background-color: rgba(255, 255, 255, 0.3);
+  margin: 0 0 1rem;
+  max-width: 20rem;
+}
+
+.vendor .bar .dumbbell {
+  height: 2px;
+  background-color: #fff;
+}
+
+.vendor .timeRemaining {
+  font-size: 0.8rem;
+}
+
+
+.vendor.spider .items.exchange {
+  display: flex;
+}
+
+.vendor.spider .items.exchange .item {
+  display: inline-flex;
+  margin: 0;
+  flex-basis: calc(100% / 7);
+  justify-content: center;
+}
+
+.vendor.spider .items.exchange .item .icon {
+  margin: 0;
+}
+
+.vendor.spider .items.exchange .item .text {
+  display: none;
+}
+
+.vendor.spider .items.exchange .item .cost {
+  margin: 6px 0 0;
+  font-size: 10px;
+}
+
+.vendor.xur .items {
+  margin: 2rem 0 1.4rem;
+}
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+.frame {
+  position: absolute;
+  height: initial;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+.frame .hotspot {
+  position: relative;
+  left: initial;
+  top: initial;
+  width: calc(100% - 4rem);
+  padding: 7rem 2rem 3rem;
+}
+
+.frame .hotspot::before {
+  top: 4rem;
+  right: -2rem;
+  font-size: 250px;
+}
+
+.frame .hotspot .name {
+  font-size: 2rem;
+}
+
+.frame .vendors {
+  position: relative;
+  left: initial;
+  top: initial;
+  width: calc(100% - 4rem);
+  display: block;
+  padding: 1rem 2rem 3rem;
+}
+
+.hotspot .bar,
+.vendor .description,
+.vendor .items,
+.vendor .bar {
+  max-width: initial;
+}
+
+.vendors .vendor {
+  margin: 0 0 3rem;
+  flex-basis: initial;
+  width: initial;
+}
+
+.vendor .items .item .cost .image {
+  flex-basis: 12px;
+  width: 12px;
+  height: 12px;
+  margin: 0 2px 0 0;
+}
+
+.vendor.spider .items.exchange .item .cost {
+  font-size: 8px;
+}
+
+
+}

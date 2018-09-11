@@ -5,9 +5,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} !index
 RewriteRule ^ index.php [L]
 
-RewriteRule ^xur/?$ index.php [L,NC]
-RewriteRule ^database/?$ index.php [L,NC]
+RewriteRule ^progression/?$ index.php [L,NC]
 RewriteRule ^checklists/?$ index.php [L,NC]
-RewriteRule ^developers/?$ index.php [L,NC]
-RewriteRule ^guides/?$ index.php [L,NC]
-RewriteRule ^clan/?$ index.php [L,NC]
+RewriteRule ^xur/?$ index.php [L,NC]
+RewriteRule ^creators/?$ index.php [L,NC]

@@ -4,25 +4,6 @@ var domain = {};
 var recycle = {};
 recycle.three = () => {
   while (scene !== undefined && scene.children.length) {
-		// var child = scene.children[0];
-		// if (child.type == "Mesh") {
-		// 	var mesh = child;
-		// 	mesh.geometry.dispose();
-		// 	mesh.geometry = undefined;
-		// 	if (mesh.material.map) {
-		// 		mesh.material.map.dispose();
-		// 		mesh.material.map = undefined;
-		// 	}
-		// 	mesh.material.dispose();
-		// 	mesh.material = undefined;
-		// 	scene.remove(mesh);
-		// }
-		// else if (child.type == "Scene") {
-		// 	scene.remove(child);
-		// }
-		// else {
-
-		// }
 		scene.remove(scene.children[0]);
   }
   console.log("three recycled");
@@ -37,12 +18,13 @@ var showdown = new showdown.Converter({
 });
 var scrolled;
 var apiKey = {
-	"braytech": "5afd1373be0bc"
+	"braytech": "5afbd2ad6cb41",
+	"bungie": "62d1114025154d87a143cfb5f7df6c96"
 }
 var timed = false;
 var index = {
 	"s": false,
-	"d": "challenges"
+	"d": "now"
 };
 
 window.addEventListener("scroll", () => {
@@ -56,7 +38,7 @@ domain.state = () => {
 	else {
 		return {
 			"s": false,
-			"d": document.location.pathname.match(/\/([a-zA-Z0-9._-]+)\/?.*/)[1]
+			"d": document.location.pathname.match(/\/([a-zA-Z0-9_-]+)\/?.*/)[1]
 		};
 	}
 }
@@ -151,7 +133,7 @@ domain.rim = function(g) {
 	$("html").removeClass("stateChange");
 
 	$(`header ul li a`).removeClass("active");
-	if (domain.state().d == "challenges") {
+	if (domain.state().d == "now") {
 		$(`header ul li a[href="/"]`).addClass("active");
 	}
 	else {

@@ -1,0 +1,333 @@
+
+.spinner svg polygon {
+  fill: #000;
+}
+
+header h1,
+header a {
+  color: #000;
+}
+
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ccc;
+}
+
+.frame {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% - 10rem);
+  color: #000;
+  padding: 7rem 5rem 4rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.frame h3 {
+  margin: 0 0 2rem;
+  padding: 0 0 0.4rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+.frame h3:nth-child(n+2) {
+  margin: 2rem 0 2rem;
+}
+
+
+
+
+
+.frame .about {
+  margin: 2rem 0 5rem;
+}
+
+
+
+
+
+
+.icons-font {
+  flex-basis: calc(50% - 1.5rem);
+  margin: 0 3rem 0 0;
+}
+
+.icons-font .entities {
+  display: flex;
+  flex-flow: row wrap;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.icons-font .entities .symbol {
+  flex-basis: calc(100% / 7);
+  padding-bottom: calc(100% / 7);
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.icons-font .entities .symbol .entity {
+  position: absolute;
+  top: 10%;
+  left: 0;
+  height: 60%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'destiny' !important;
+  speak: none;
+  font-size: 2rem;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icons-font .entities .symbol .name {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  height: 30%;
+  width: 100%;
+  text-align: center;
+  line-height: 1.4;  
+  font-size: 12px;
+}
+
+
+
+
+
+
+.api {
+  flex-basis: calc(50% - 1.5rem);
+}
+
+.api .endpoint {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 2rem;
+}
+
+.api .endpoint .method {
+  flex-basis: 4rem;
+  padding: 0.8rem 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  font-size: 14px;
+  font-family: monospace;
+}
+
+.api .endpoint .absolute {
+  padding: 0.8rem 1rem;
+  flex-basis: calc(100% - 8rem);
+  background-color: rgba(255, 255, 255, 0.4);
+  font-size: 14px;
+  font-family: monospace;
+}
+
+.api .endpoint .description {
+  padding: 1.8rem 1rem 0.8rem;
+  flex-basis: calc(100% - 2rem);
+  background-color: rgba(255, 255, 255, 0.1);
+  line-height: 2;
+}
+
+.api .endpoint .description::before {
+  content: "Description";
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 0 0.4rem;
+  margin: 0 0 1.2rem;
+  line-height: initial;
+}
+
+.api .endpoint .parameters {
+  padding: 0.8rem 1rem;
+  flex-basis: calc(100% - 2rem);
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.api .endpoint .parameters::before {
+  content: "Parameters";
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 0 0.4rem;
+  margin: 0 0 0.8rem;
+}
+
+.api .endpoint .parameters li {
+  position: relative;
+  line-height: 2;
+  padding: 0 0 0 10rem;
+}
+
+.api .endpoint .parameters li::before {
+  content: attr(data-key);
+  position: absolute;
+  left: 0;
+}
+
+.api .endpoint .response {
+  padding: 0.8rem 0 0;
+  flex-basis: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.api .endpoint .response::before {
+  content: "Response";
+  display: block;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 0 0.4rem;
+  margin: 0 1rem 0.8rem;
+}
+
+.api .endpoint .response .note {
+  padding: 0.8rem 1rem 1.8rem;
+  font-style: italic;
+  letter-spacing: 0.5px;
+}
+
+.api .endpoint .response pre {
+  white-space: pre-wrap;
+  padding: 0.8rem 1rem 0.8rem;
+  background-color: rgba(255, 255, 255, 0.6);
+  font-size: 14px;
+}
+
+.api .form {
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgba(255, 255, 255, 0.6);
+  margin: 0 0 2rem;
+}
+
+.api .form .header {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.api .form .header .text {
+  display: flex;
+  align-items: center;
+  padding: 0 0 0 1rem;
+}
+
+.api .form .header .field {
+  margin: 0.4rem 1rem;
+}
+
+.api .form .request {
+  padding: 0.8rem 1rem 0;
+  width: 100%;
+  display: none;
+}
+
+.api .form.active .request {
+  display: block;
+}
+
+.api .form .request code {
+  margin: 0 0 1rem;
+  font-family: monospace;
+  font-weight: 600;
+  display: block;
+}
+
+.api .form.active .header .field {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.api .form .request p {
+  margin: 0 0 0.8rem;
+}
+
+.form .field {
+  margin: 0 0 1.4rem;
+}
+
+.form .field:last-child {
+  display: inline-block;
+  margin: 0 0 1rem;
+}
+
+.form .field input,
+.form .field button {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.form .field::after {
+  box-shadow: 0 0 0 2px rgba(38, 38, 38, 0);
+}
+
+.form .field:hover input,
+.form .field:hover button {
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #000;
+  box-shadow: inset 0 0 0 1px #000;
+}
+
+.form .field:hover::after {
+  box-shadow: 0 0 0 2px #000;
+}
+
+.form .field input:focus,
+.form .field:hover input:focus,
+.form .field button:focus,
+.form .field:hover button:focus {
+  color: #000;
+}
+
+
+.api .key-use {
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 1rem 1rem 0;
+  margin: 0 0 2rem;
+}
+
+.api .key-use pre {
+  white-space: pre-wrap;
+  font-size: 14px;
+  margin: 1rem 0 0;
+}
+
+
+@media screen and (max-width: 500px) {
+
+.frame {
+  width: calc(100% - 4rem);
+  padding: 7rem 2rem 5rem;
+}
+
+.icons-font,
+.api {
+  margin: 0;
+  flex-basis: 100%;
+}
+
+.icons-font .entities .symbol {
+  flex-basis: calc(100% / 3);
+  padding-bottom: calc(100% / 3);
+}
+
+.icons-font .entities .symbol .name {
+  
+}
+
+.api .endpoint .response pre {
+  white-space: pre;
+  overflow-x: scroll;
+  width: calc(100vw - 6rem);
+}
+
+
+
+}

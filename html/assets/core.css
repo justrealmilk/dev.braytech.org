@@ -195,7 +195,7 @@ header .trigger {
   z-index: 1000;
   display: flex;
   align-items: center;
-  font-family: 'destiny' !important;
+  font-family: 'symbols' !important;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -432,6 +432,123 @@ main {
   padding-top: 5rem;
 }
 
+input {
+  -webkit-appearance: none;
+  border: none;
+  font: inherit;
+  line-height: initial;
+  padding: 0;
+  margin: 0;
+  padding: 0;
+  min-height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  background-color: transparent;
+  outline: none;
+  white-space: normal;
+  box-sizing: inherit;
+  border-radius: 0;
+}
+
+input::placeholder {
+  color: inherit;
+  opacity: 0.4;
+}
+
+:focus {
+  outline: none;
+}
+
+button.square {
+  display: inline-block;
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+  margin: 0 6px 0 0;
+  justify-content: center;
+  font-size: 22px;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+button.square::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+  transition: box-shadow .25s;
+}
+
+button.square:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 1);
+}
+
+button.square:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+button.square.active {
+  color: rgba(255, 255, 255, 1);
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 1);
+}
+
+.form .field {
+  position: relative;
+  margin: 0 0 1rem;
+}
+
+.form .field::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);  
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+.form .field input,
+.form .field button {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 0 1rem;
+  transition: background-color .25s, box-shadow .25s;
+}
+
+.form .field input {
+  width: calc(100% - 2rem);
+}
+
+.form .field:hover input,
+.form .field:hover button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+.form .field:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+.form .field input:focus,
+.form .field:hover input:focus,
+.form .field button:focus,
+.form .field:hover button:focus {
+  color: #fff;
+}
+
 .loadingScreen {
   background-color: #e93421;
   position: fixed;
@@ -472,6 +589,81 @@ html.stateChange .loadingScreen {
   transform: scale(1);
   transition: opacity 1s, transform 1.4s cubic-bezier(0, 0.98, 0.52, 1);
 }
+
+/*
+
+Visual Studio-like style based on original C# coloring by Jason Diamond <jason@diamond.name>
+
+*/
+.hljs {
+  color: #343434;
+  font-family: monospace;
+  line-height: 1.4;
+}
+
+.hljs-comment,
+.hljs-quote,
+.hljs-variable {
+  color: #008000;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+  color: #00f;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+  color: #a31515;
+}
+
+.hljs-number {
+  color: #09885a;
+}
+
+.hljs-literal {
+  color: #00f;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+  color: #2b91af;
+}
+
+.hljs-doctag {
+  color: #808080;
+}
+
+.hljs-attr {
+  color: #000000;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+  color: #00b0e8;
+}
+
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
 
 
 @media screen and (max-width: 500px) {
