@@ -9,16 +9,16 @@ header a {
   color: #fff;
 }
 
-.bg {
+#root .bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #1b1e2c;
+  background-color: #5c5953;
 }
 
-.frame {
+#root .frame {
   position: absolute;
   top: 0;
   left: 0;
@@ -27,25 +27,34 @@ header a {
   color: #fff;
 }
 
-.frame h3 {
+#root .frame h3 {
   margin: 0 0 2rem;
   padding: 0 0 0.4rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.frame h3:nth-child(n+2) {
+#root .frame h3:nth-child(n+2) {
   margin: 2rem 0 2rem;
 }
 
-.frame h4 {
+#root .frame h4 {
   text-transform: uppercase;
-  font-weight: 500;
-  font-size: 14px;
-  margin: 3rem 0 2rem;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.4);
 }
 
 .mobileOnly {
   display: none;
+}
+
+[class^="page-"] {
+  display: none;
+}
+
+[class^="page-"].active {
+  display: block;
 }
 
 .results ul li {
@@ -98,6 +107,30 @@ header a {
   box-shadow: 0 0 0 2px #d6d6d6;
 }
 
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.c-1-1 {
+  flex-basis: 100%;
+}
+
+.c-1-2 {
+  flex-basis: 50%;
+}
+
+.c-1-3 {
+  flex-basis: calc(100% / 3 - 2rem);
+}
+
+.c-1-4 {
+  flex-basis: calc(100% / 4 - 2rem);
+}
+
+.c-3-4 {
+  flex-basis: calc((100% / 4) * 3 - 2rem);
+}
 
 
 
@@ -107,15 +140,16 @@ header a {
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s;
+  margin: 0 0 3rem;
 }
 
-.frame.hasManifest #players {
+#root .frame.hasManifest #players {
   opacity: 1;
   pointer-events: initial;
 }
 
-.frame.hasProfile #characters,
-.frame.hasProfile #character {
+#root .frame.hasProfile #characters,
+#root .frame.hasProfile #character {
   opacity: 1;
   pointer-events: initial;
 }
@@ -123,25 +157,12 @@ header a {
 
 
 
-#players {
+
+#root .frame .controls {
   position: absolute;
-  top: 7rem;
+  top: 11rem;
   left: 5rem;
-  width: 300px;
-}
-
-#characters {
-  position: absolute;
-  top: 7rem;
-  left: calc(5rem + 300px + 3rem);
   width: 474px;
-}
-
-#character {
-  position: absolute;
-  top: 7rem;
-  left: calc(5rem + 300px + 3rem + 474px + 3rem);
-  width: calc(100% - (5rem + 300px + 3rem + 474px + 3rem) - 5rem);
 }
 
 
@@ -299,85 +320,83 @@ header a {
 
 
 
-
-
-
-
-#character .list li {
-  position: relative;
-  padding: 0 0 0 50%;
-  margin: 0 0 0.4rem;
-  line-height: 1.4;
-}
-
-#character .list li::before {
-  content: attr(data-text);
+#character {
   position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0.4;
+  top: 11rem;
+  left: calc(5rem + 474px + 3rem);
+  width: calc(100% - (5rem + 474px + 3rem) - 5rem);
 }
 
-#character .accountSummary,
-#character .characterSummary {
-  display: flex;
-  flex-flow: row wrap;
+#character .section {
+  display: none;
 }
 
-#character .c-1-1 {
-  flex-basis: 100%;
+#character .section.active {
+  display: inherit;
 }
 
-#character .c-1-2 {
-  flex-basis: 50%;
+#character > .header {
+  margin: 0 0 3rem;
 }
 
-#character .c-1-3 {
-  flex-basis: calc(100% / 3 - 2rem);
-}
-
-#list-region_chests {
-  margin: 0 3rem;
-}
-
-#character .accountSummary .totals {
-  height: 17rem;
-  display: flex;
-  flex-flow: row wrap;
-  align-content: center;
-  position: relative;
-}
-
-#character .accountSummary .totals::before {
-  content: " ";
-  position: absolute;
-  top: 34%;
-  left: 20%;
-  height: 5rem;
-  width: 60%;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-#character .accountSummary .totals div {
-  flex-basis: 100%;
-  text-align: center;
-  position: relative;
-  z-index: 2;
-}
-
-#character .accountSummary .totals .intScore {
-  font-size: 4rem;
+#character .header .triumphsScore, 
+#character .header .timePlayed {
+  font-size: 3rem;
   font-weight: 600;
 }
 
-#character .accountSummary .totals .textScore {
-  margin: 1rem 0 0;
-  opacity: 0.4;
+#character .header .sections button {
+  flex-basis: calc(50% - 6px);
+  position: relative;
+  margin: 3px;
+  height: 52px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0.2);
+  font-size: 16px;
+  cursor: default;
+  transition: color .25s, background-color .25s, box-shadow .25s;
 }
 
-#character .accountSummary .totals .textTime {
-  margin: 3rem 0 0;
+#character .header .sections button::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+  transition: box-shadow .25s;
 }
+
+#character .header .sections button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+#character .header .sections button:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+#character .header .sections button.active {
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 1);
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 1);
+}
+
+#character .header .sections button.active:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+
+
 
 #character .checks li {
   position: relative;
@@ -413,35 +432,128 @@ header a {
   color: rgba(255, 255, 255, 0.6);
 }
 
-#character .accountSummary .moments .checks {
-  display: flex;
-  flex-flow: row wrap;
+
+
+
+#triumphSeals {
+  
 }
 
-#character .accountSummary .moments .checks li {
-  flex-basis: calc(100% / 3);
-  margin: 0 0 0.4rem;
-}
-
-
-
-#character .accountSummary .seals {
+#triumphSeals .summary {
   display: flex;
   flex-flow: row wrap;
-  align-content: center;
+  margin: 0 0 3rem;
+}
+
+#triumphSeals .c-1-4.triumphsOverall {
+  flex-basis: calc(100% / 4);
+  margin: 0 2rem 0 0;
   position: relative;
 }
 
-#character .accountSummary .seals .seal {
-  flex-basis: 100%;
-  background-color: #7b3274;
-  background-color: rgba(255, 255, 255, 0.1);
-  display: flex;
-  flex-flow: row wrap;
-  margin: 0 0 8px;
+#triumphSeals .c-1-4.triumphsOverall .bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 0 0 4px;
 }
 
-#character .accountSummary .seals .seal .title {
+#triumphSeals .c-1-4.triumphsOverall .bottom h4 {
+  margin: 0 0 1rem;
+}
+
+
+
+
+.corners {
+  position: absolute;
+  width: 100%;
+  left: 0;
+}
+
+.corners::before,
+.corners::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  width: 7px;
+  height: 7px;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 1px 0 0 1px;
+}
+
+.corners::after {
+  border-width: 1px 1px 0 0;
+  left: initial;
+  right: 0;
+}
+
+.corners.t {
+  top: 0;
+}
+
+.corners.b {
+  bottom: 8px;
+}
+
+.corners.b::before {
+  border-width: 0 0 1px 1px;
+}
+
+.corners.b::after {
+  border-width: 0 1px 1px 0;
+}
+
+
+
+.triumphsOverall .header .icon {
+  position: relative;
+  flex-basis: 100%;
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.triumphsOverall .header .icon .corners {
+  opacity: 0.2;
+}
+
+.triumphsOverall .header .icon .image {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 100%;
+}
+
+.triumphsOverall .header .text {
+  margin: 1.2rem 0 0;
+}
+
+.triumphsOverall .header .text .name {
+  text-transform: uppercase;
+  font-size: 38px;
+  font-weight: 500;
+  margin: 0 0 1.6rem;
+}
+
+.triumphsOverall .header .text .description {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.triumphsOverall .seal {
+  flex-basis: 100%;
+  background-color: #7b3274;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.triumphsOverall .seal .title {
   flex-basis: 70%;
   font-weight: 500;
   font-size: 14px;
@@ -449,7 +561,7 @@ header a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-#character .accountSummary .seals .seal .fraction {
+.triumphsOverall .seal .fraction {
   flex-basis: calc(30% - 20px);
   text-align: right;
   font-weight: 500;
@@ -458,15 +570,14 @@ header a {
   color: rgba(255, 255, 255, 0.8);
 }
 
-#character .accountSummary .seals .seal .progress {
+.triumphsOverall .seal .progress {
   flex-basis: 100%;
-  margin: 0 2px 2px;
   position: relative;
   height: 5px;
   background-color: rgba(255, 255, 255, 0.2);
 }
 
-#character .accountSummary .seals .seal .progress .bar {
+.triumphsOverall .seal .progress .bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -474,55 +585,285 @@ header a {
   background-color: #fdfdfd;
 }
 
-
-
-
-#character .characterSummary .emblemIcon .image {
-  position: relative;
-  width: 96px;
-  height: 96px;
-  margin: 0 0 3rem;
-}
-
-
-
-
-#character .characterSummary .checklists .header {
+.triumphs {
   display: flex;
   flex-flow: row wrap;
-  margin: 0 0 1rem;
 }
 
-#character .characterSummary .checklists .header .icon {
+.triumphs .record {
+  flex-basis: calc(100% / 2 - 5px);
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, 0.2);
+  margin: 0 0 5px 5px;
+  padding: 0 0 5px 0;
+  min-height: 7rem;
+}
+
+.triumphs .record .icon {
   flex-basis: 3rem;
-  font-size: 32px;
-}
-
-#character .characterSummary .checklists .header .title {
-  flex-basis: calc(100% - 3rem);
-  text-transform: uppercase;
+  padding: 1.2rem 1.4rem;
   display: flex;
   align-items: center;
 }
 
-#character .characterSummary .checklists .header .description {
-  font-style: italic;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  margin: 1rem 0 0;
-  line-height: 1.4;
-  min-height: 2.4rem;
+.triumphs .record .icon .image {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
 }
 
-#character .characterSummary .checklists .progress {
+.triumphs .record .text {
+  flex-basis: calc(100% - 7.2rem);
+  padding: 1.2rem 1.4rem 1.2rem 0;
+}
+
+.triumphs .record .name {
+  line-height: 2;
+  font-size: 14px;
+  padding: 0 0 0.2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  margin: 0 0 0.6rem;
+}
+
+.triumphs .record .description {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.triumphs .record .progress {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.triumphs .record .progress::after {
+  content: attr(data-fraction);
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  font-size: 14px;
+  opacity: 0.2;
+}
+
+.triumphs .record .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.triumphs .record.complete {
+  background-color: rgba(207, 191, 124, 0.1);
+  box-shadow: inset 0 0 0px 1px rgba(207, 191, 124, 0.4);
+  color: rgba(207, 191, 124, 1);
+}
+
+.triumphs .record.complete .name {
+  border-bottom: 1px solid rgba(207, 191, 124, 0.1);
+}
+
+.triumphs .record.complete .text .description {
+  color: rgba(207, 191, 124, 0.6);
+}
+
+.triumphs .record.complete .progress {
+  background-color: rgba(207, 191, 124, 0.1);
+}
+
+.triumphs .record.complete .progress .bar {
+  background-color: rgba(207, 191, 124, 0.6);
+}
+
+.triumphs .record.link {
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+.triumphs .record.link::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);  
+  transition: box-shadow .25s;
+}
+
+.triumphs .record.link:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+.triumphs .record.link:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+.triumphs .record.link.complete::after {
+  box-shadow: 0 0 0 2px rgba(207, 191, 124, 0);
+}
+
+.triumphs .record.link.complete:hover {
+  background-color: rgba(207, 191, 124, 0.4);
+  color: rgba(207, 191, 124, 1);
+  box-shadow: inset 0 0 0 1px rgba(207, 191, 124, 1);
+}
+
+.triumphs .record.link.complete:hover::after {
+  box-shadow: 0 0 0 2px rgba(207, 191, 124, 1);
+}
+
+
+
+
+
+.items {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.items .item {
+  flex-basis: calc(100% / 3 - 5px);
+  position: relative;
+  display: flex;
+  flex-flow: row wrap;
+  color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, 0.2);
+  margin: 0 0 5px 5px;
+}
+
+.items .item .icon {
+  flex-basis: 3rem;
+  background-color: #ceae33;
+  display: flex;
+  align-items: center;
+}
+
+.items .item .icon .image {
+  position: relative;
+  width: 3rem;
+  height: 3rem;
+}
+
+.items .item .text {
+  flex-basis: calc(100% - 7.2rem);
+  padding: 0 1.4rem;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.items .item .name {
+  line-height: 2;
+  font-size: 14px;
+}
+
+.items .item.discovered {
+  color: rgba(255, 255, 255, 0.8);
+  background-color: rgba(255, 255, 255, 0.2);
+  box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, 0.2);
+}
+
+.items .item.discovered .text .description {
+  color: rgba(207, 191, 124, 0.6);
+}
+
+.items .item.link {
+  transition: color .25s, background-color .25s, box-shadow .25s;
+  cursor: default;
+  pointer-events: none;
+}
+
+.items .item.link::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);  
+  transition: box-shadow .25s;
+}
+
+.items .item.link:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+  z-index: 2;
+}
+
+.items .item.link:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+.items .item.link.discovered::after {
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+}
+
+.items .item.link.discovered:hover {
+  color: rgba(255, 255, 255, 1);
+  background-color: rgba(255, 255, 255, 0.4);
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+.items .item.link.discovered:hover::after {
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 1);
+}
+
+
+
+#exotics .kind {
+  margin: 1rem 0 3rem;
+}
+
+#exotics .kind .c-1-4 {
+  flex-basis: calc(100% / 4);
+  margin: 0 2rem 0 0;
+  position: relative;
+}
+
+#exotics .kind .c-3-4 {
+  
+}
+
+#exotics .kind .c-1-4 .name {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 1.6rem;
+}
+
+#exotics .kind .c-1-4 .bottom {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+
+#exotics .kind .progress {
   position: relative;
   background-color: rgba(255, 255, 255, 0.1);
   display: flex;
   flex-flow: row wrap;
-  margin: 0 0 2rem;
+  margin: 0 0 5px;
 }
 
-#character .characterSummary .checklists .progress .title {
+#exotics .kind .progress .title {
   flex-basis: 70%;
   font-size: 14px;
   padding: 8px 0 8px 10px;
@@ -531,7 +872,7 @@ header a {
   z-index: 2;
 }
 
-#character .characterSummary .checklists .progress .fraction {
+#exotics .kind .progress .fraction {
   flex-basis: calc(30% - 20px);
   text-align: right;
   font-size: 14px;
@@ -541,7 +882,7 @@ header a {
   z-index: 2;
 }
 
-#character .characterSummary .checklists .progress .bar {
+#exotics .kind .progress .bar {
   position: absolute;
   top: 0;
   left: 0;
@@ -550,20 +891,784 @@ header a {
   background-color: #5aa366;
 }
 
-#character .characterSummary .checklists .checks li {
-  font-size: 14px;
+
+
+
+
+#checklists > h4:first-child {
+  margin: 0;
 }
 
-#character .characterSummary .checklists .checks li .completed {
-  margin: 5px 1rem 0 3px;
+#checklists .emblemIcon .image {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: 0 0 3rem;
 }
 
-#character .characterSummary .checklists .checks.single-line li {
+.pages {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 0 1rem;
+}
+
+.pages button {
+  font-size: 16px;
+}
+
+
+#character .c-1-4.checklists {
+  margin: 0 1rem;
+  flex-basis: calc(100% / 4 - 1.5rem);
+}
+
+#character .c-1-4.checklists:nth-child(1) {
+  margin: 0 1rem 0 0;
+}
+
+#character .c-1-4.checklists:nth-child(n+4) {
+  margin: 0 0 0 1rem;
+}
+
+#character .c-1-4.checklists[id="list-caydes_journals"] {
+  margin: 0 0 0 1rem;
+  flex-basis: calc(100% / 2 - 1rem);
+}
+
+#character .c-1-4.checklists[id="list-caydes_journals"] .checks li .completed {
+  flex-shrink: 0;
+}
+
+#checklists .checklists .header {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  margin: 0 0 1rem;
+  min-height: 4rem;
+}
+
+#checklists .checklists .header .icon {
+  flex-basis: 3rem;
+  font-size: 32px;
+}
+
+#checklists .checklists .header .title {
+  flex-basis: calc(100% - 3rem);
+  text-transform: uppercase;
+  display: flex;
   align-items: center;
 }
 
-#character .characterSummary .checklists .checks.single-line li .completed {
+#checklists .checklists .header .description {
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+  margin: 0;
+  flex-basis: calc(100% - 3rem);
+}
+
+#checklists .checklists .progress {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 0 2rem;
+}
+
+#checklists .checklists .progress .title {
+  flex-basis: 70%;
+  font-size: 14px;
+  padding: 8px 0 8px 10px;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+#checklists .checklists .progress .fraction {
+  flex-basis: calc(30% - 20px);
+  text-align: right;
+  font-size: 14px;
+  padding: 8px 10px 8px 0;
+  color: rgba(255, 255, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+#checklists .checklists .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #5aa366;
+}
+
+#checklists .checklists .checks li {
+  font-size: 14px;
+}
+
+#checklists .checklists .checks li .completed {
+  margin: 5px 1rem 0 3px;
+}
+
+#checklists .checklists .checks.single-line li {
+  align-items: center;
+}
+
+#checklists .checklists .checks.single-line li .completed {
   margin: 0 1rem 0 3px;
+}
+
+
+
+
+
+
+
+
+#loreBook {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #424448;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#loreBook.open {
+  pointer-events: initial;
+  opacity: 1;
+}
+
+#loreBook .border {
+  position: absolute;
+  top: 7rem;
+  left: 10%;
+  width: 80%;
+  height: calc(100% - 14rem);
+}
+
+#loreBook .border::before {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 14px;
+  border-width: 2px 0 2px 2px;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+#loreBook .border::after {
+  content: " ";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 14px;
+  border-width: 2px 2px 2px 0;
+  border-style: solid;
+  border-color: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+#loreBook .frame {
+  position: absolute;
+  top: 0;
+  left: 8rem;
+  width: calc(100% - 16rem);
+  height: 100%;  
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+#loreBook .frame::after {
+  content: " ";
+  position: absolute;
+  left: calc(30% + 3rem);
+  bottom: 0;
+  width: calc(70% - 3rem);
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+#loreBook .chapterTitle {
+  flex-basis: 100%;
+  margin: 0 0 2.4rem;
+  padding: 0 0 1rem;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+  opacity: 0;
+}
+
+#loreBook .chapterTitle::before {
+  content: "“";
+  position: absolute;
+  top: 0.2rem;
+  left: -1.8rem;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 2.6rem;
+}
+
+#loreBook .chapterTitle::after {
+  content: "”";
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 2.6rem;
+  position: relative;
+  top: -0.2rem;
+  left: 0.6rem;
+}
+
+#loreBook.entry .chapterTitle {
+  opacity: 1;
+}
+
+#loreBook .book {
+  flex-basis: 30%;
+}
+
+#loreBook .book::before {
+  content: " ";
+  position: absolute;
+  top: -5.5rem;
+  left: -2px;
+  max-width: 364px;
+  width: 30%;
+  height: 100vh;
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewbox='0 0 24 24'><circle cx='1.5' cy='1.5' r='1.5' fill='rgba(255,255,255,0.2)' ></circle></svg>");
+}
+
+#loreBook .book::after {
+  content: " ";
+  position: absolute;
+  top: -1rem;
+  left: -1.5rem;
+  width: calc(30% - 2rem);
+  padding: 2rem;
+  height: calc(100% - 4rem);
+  background-color: #424448;
+  z-index: 0;
+}
+
+#loreBook .book .bookCover {
+  max-width: 359px;
+  margin: 0 0 1.4rem;
+  position: relative;
+  z-index: 1;
+}
+
+#loreBook .book .bookCover .image {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: calc(460 / 359 * 100%);
+}
+
+#loreBook .book .bookTitle {
+  max-width: 359px;
+  text-align: center;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 3px;
+  font-size: 14px;
+  margin: 0 0 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+#loreBook .book .hr {  
+  position: relative;
+  z-index: 1;
+  max-width: 359px;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  padding: 1px 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+#loreBook .return,
+#loreBook .close {
+  max-width: 359px;
+  width: 30%;
+  position: absolute;
+  left: 0;
+  bottom: 3rem;
+  justify-content: center;
+  display: none;
+}
+
+#loreBook .close {
+  display: flex;
+}
+
+#loreBook.entry .return {
+  display: flex;
+}
+
+#loreBook.entry .close {
+  display: none;
+}
+
+
+#loreBook .return button,
+#loreBook .close button {
+  position: relative;
+  margin: 3px;
+  height: 38px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.5);
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0.2);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: default;
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+#loreBook .return button::after,
+#loreBook .close button::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+  transition: box-shadow .25s;
+}
+
+#loreBook .return button:hover,
+#loreBook .close button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+#loreBook .return button:hover::after,
+#loreBook .close button:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+#loreBook .chapters {
+  position: absolute;
+  left: calc(30% + 3rem);
+  top: 7rem;
+  height: calc(100% - 9rem);
+  width: calc(70% - 4rem);
+  padding: 0 1rem 0 0;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  overflow-y: auto;
+  display: flex;
+  flex-flow: row wrap;
+  align-content: flex-start;
+}
+
+#loreBook .chapters button {
+  flex-basis: calc(50% - 6px);
+  position: relative;
+  margin: 3px;
+  height: 52px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0.2);
+  font-size: 16px;
+  cursor: default;
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+#loreBook .chapters button::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+  transition: box-shadow .25s;
+}
+
+#loreBook .chapters button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+#loreBook .chapters button:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+#loreBook .chapters button.discovered {
+  background-color: rgba(207, 191, 124, 0);
+  color: rgba(207, 191, 124, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(207, 191, 124, 0.4);
+}
+
+#loreBook .chapters button.discovered::after {
+  box-shadow: 0 0 0 2px rgba(207, 191, 124, 0);
+}
+
+#loreBook .chapters button.discovered:hover {
+  background-color: rgba(207, 191, 124, 0.4);
+  color: rgba(207, 191, 124, 1);
+  box-shadow: inset 0 0 0 1px rgba(207, 191, 124, 1);
+}
+
+#loreBook .chapters button.discovered:hover::after {
+  box-shadow: 0 0 0 2px rgba(207, 191, 124, 1);
+}
+
+#loreBook .chapter {
+  position: absolute;
+  left: calc(30% + 3rem);
+  top: 7rem;
+  height: calc(100% - 9rem);
+  width: calc(70% - 3rem);
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  overflow-y: scroll;
+  display: none;
+}
+
+#loreBook.entry .chapter p {
+  line-height: 1.6;
+  margin: 0 0 2rem;
+  padding: 0 4rem 0 0;
+}
+
+#loreBook.entry .chapters {
+  display: none;
+}
+
+#loreBook.entry .chapter {
+  display: block;
+}
+
+
+
+
+#ranks .kind {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 500;
+}
+
+#ranks .friendly {
+  font-size: 14px;
+  margin: 0.6rem 0 2rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#ranks .steps {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 1rem 0 3rem;
+}
+
+#ranks .steps .step {
+  position: relative;
+}
+
+#ranks .steps .step::before {
+  content: attr(data-stepname);
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#ranks .steps .index0::before {
+  content: "0" !important;
+}
+
+#ranks .steps .progress {
+  flex-basis: 100%;
+  position: relative;
+  margin: 1.4rem 0 0;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#ranks .steps .progress .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #f700ff;
+}
+
+#ranks .gambit .steps .step::before {
+  content: none;
+}
+
+#ranks .gambit .steps .index0::before,
+#ranks .gambit .steps .index3::before,
+#ranks .gambit .steps .index6::before,
+#ranks .gambit .steps .index9::before,
+#ranks .gambit .steps .index12::before,
+#ranks .gambit .steps .index15::before {
+  content: attr(data-stepname);
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#ranks .gambit .steps .progress .bar {
+  background-color: #25986e;
+}
+
+#ranks .valor .steps .progress .bar {
+  background-color: #ed792c;
+}
+
+#ranks .glory .steps .progress .bar {
+  background-color: #b52422;
+}
+
+
+
+
+
+
+
+
+#itemInspect {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #868379;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+}
+
+#itemInspect.open {
+  pointer-events: initial;
+  opacity: 1;
+}
+
+#itemInspect .canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+#itemInspect .rarity {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  background: linear-gradient(90deg, rgba(var(--exotic), 0.8) 0%, rgba(var(--exotic), 0.5) 38%, rgba(var(--exotic), 0.5) 70%, rgba(var(--exotic), 0.5) 100%);
+  border-bottom: 0.6rem solid rgba(var(--exotic), 1);
+  opacity: 0.7;
+}
+
+#itemInspect .alpha {
+  position: absolute;
+  top: 7rem;
+  left: 11rem;
+}
+
+#itemInspect .alpha h3 {
+  text-transform: uppercase;
+  font-size: 20px;
+  border-bottom: 3px solid rgba(255, 255, 255, 0.4);
+  padding: 0 0 4px;
+  margin: 0 0 16px;
+  width: 692px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#itemInspect .alpha .image.icon {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  box-shadow: inset 0 0 0 3px #ffffff;
+  margin: 0 1.4rem 0 0;
+}
+
+#itemInspect .alpha .header {
+  align-items: center;
+  margin: 0 0 2.4rem;
+}
+
+#itemInspect .alpha .text .name {
+  font-size: 64px;
+  text-transform: uppercase;
+  font-weight: 500;
+  color: #fff;
+  margin: 0 0 11px;
+}
+
+#itemInspect .alpha .text .type {
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+#itemInspect .alpha .description {
+  font-size: 20px;
+  font-style: italic;
+  letter-spacing: 1px;
+  line-height: 1.2;
+  width: 692px;
+  margin: 0 0 3rem;
+}
+
+#itemInspect .alpha .sockets {
+  align-content: flex-start;
+  width: 692px;
+  margin: 0 0 2rem;
+}
+
+#itemInspect .alpha .sockets.perks {
+  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 18 18'><rect fill='#fff' fill-opacity='0.04' width='18' height='2' y='8'/><rect fill='#fff' fill-opacity='0.04' width='2' height='18' x='8'/><rect fill='#fff' fill-opacity='0.08' width='2' height='2' y='8' x='8'/></svg>");
+}
+
+#itemInspect .alpha .sockets.perks .socket:not(:first-child) {
+  border-left: 2px solid rgba(255, 255, 255, 0.4);
+  margin: 0 0 0 12px;
+  padding: 0 0 0 12px;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug {
+  margin: 0 0 12px;
+}
+
+#itemInspect .alpha .sockets .socket .plug .icon {
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.8);
+  position: relative;
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug .icon .image {
+  position: relative;
+  width: 94px;
+  height: 94px;
+  z-index: -1;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug .icon {
+  padding: 8px;
+  box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.4);
+  border-radius: 100%;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:not(.intrinsic) .icon::before {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);
+  border-radius: 100%;
+  transition: box-shadow 0.25s;
+  pointer-events: none;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:hover .icon::before {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 1);
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug .icon .image {
+  position: relative;
+  width: 60px;
+  height: 60px;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug.intrinsic .icon {
+  padding: 0;
+  box-shadow: none;
+  border-radius: none;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug.intrinsic .icon .image {
+  width: 80px;
+  height: 80px;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:not(.intrinsic) .icon {
+  margin: 2px 0 0;
+  transition: background-color 0.25s;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:not(.intrinsic):hover .icon {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:not(.intrinsic).selected .icon {
+  background-color: #5f98c0;
+}
+
+#itemInspect .alpha .sockets.perks .socket .plug:not(.intrinsic).selected:hover .icon {
+  background-color: #83b0cf;
+}
+
+#itemInspect .alpha .sockets.mods .socket {
+  display: flex;
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug {
+  margin: 0 8px 0 0;
+  transition: background-color 0.25s;
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug .icon {
+  box-shadow: inset 0 0 0 3px rgba(255, 255, 255, 0.8);
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug .icon::before {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0);
+  transition: box-shadow 0.25s;
+  pointer-events: none;
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug:hover .icon::before {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 1);
+}
+
+#itemInspect .alpha .sockets.mods .socket .plug:hover .icon {
+  background-color: rgba(255, 255, 255, 0.2);
 }
 
 
@@ -576,18 +1681,17 @@ header a {
 @media screen and (max-width: 1024px) {
 
 
-header {
-  width: calc(100% - 4rem);
-  padding: 0 2rem;
+#root .frame .controls {
+  position: relative;
+  top: initial;
+  left: initial;
+  width: 100%;
 }
 
-.frame {  
-  display: flex;
-  flex-flow: row wrap;
+[class^="page-"] {
+  display: block;
 }
 
-#players,
-#characters,
 #character {
   position: relative;
   top: initial;
@@ -609,8 +1713,38 @@ header {
   margin: 7rem 2rem 0 1rem;
 }
 
+.triumphs .record {
+  flex-basis: 100%;
+  margin: 0 0 5px 0;
+}
 
+.triumphs .record:nth-child(even) {
+  margin: 0 0 5px;
+}
 
+#character .c-1-4.triumphsOverall {
+  flex-basis: 100%;
+  margin: 0;
+}
+
+#character .c-1-4.triumphsOverall .bottom {
+  position: relative;
+  bottom: initial;
+  left: initial;
+  padding: 0;
+  margin: 2rem 0 2rem;
+}
+
+#players,
+#characters,
+#character {
+  margin: 3rem 2rem 2rem;
+  flex-basis: initial;
+}
+
+#players {
+  margin: 7rem 2rem 2rem;
+}
 
 
 #characters .results ul li .image.emblem.missing {
@@ -654,62 +1788,137 @@ header {
 }
 
 
-
-
-
-
+.c-1-2,
+.c-1-3,
+.c-1-4,
+.c-3-4 {
+  flex-basis: 100% !important;
+  margin: 0 0 1rem !important;
 }
 
-@media screen and (max-width: 500px) {
-
-.frame {
-  display: initial;
+#checklists > h4:first-child {
+  margin: 0 0 2rem;
 }
 
-#players,
-#characters,
-#character {
-  margin: 3rem 2rem 2rem;
-  flex-basis: initial;
-}
-
-#players {
-  margin: 7rem 2rem 2rem;
-}
-
-#character .accountSummary .c-1-2 {
-  flex-basis: 100%;
-  margin: 0 0 1rem;
-}
-
-#character .characterSummary .c-1-2,
-#character .characterSummary .c-1-3 {
-  flex-basis: 100%;
-  margin: 0 0 1rem;
-}
-
-
-#character .c-1-1.checklistsToggle.mobileOnly {
+#checklists .toggle.mobileOnly {
   margin: 0 0 2rem;
   display: block;
 }
 
-#character .characterSummary .checklists {
+#checklists .toggle.mobileOnly button {
+  margin: 0 6px 6px 0;
+}
+
+#checklists .pages {
   display: none;
 }
 
-#character .characterSummary .checklists.active {
+#checklists .checklists {
+  display: none;
+  flex-basis: 100% !important;
+  margin: 0 !important;
+}
+
+#character .c-1-4.checklists:nth-child(odd) {
+  margin: 0;
+}
+
+#checklists .checklists.active {
   display: block;
 }
 
-#character .characterSummary .checklists .header .description {
+#checklists .checklists .header .description {
   min-height: initial;
 }
 
 
 
 
+.triumphs .record.link {
+  pointer-events: none;
+}
 
+
+
+
+#loreBook .border {
+  position: fixed;
+  top: 7rem;
+  left: 2rem;
+  width: calc(100% - 4rem);
+  height: calc(100% - 9rem);
+}
+
+#loreBook .frame {
+  top: 2rem;
+  left: 2rem;
+  width: calc(100% - 4rem);
+  height: calc(100% - 4rem);
+}
+
+#loreBook .book::before,
+#loreBook .book::after {
+  content: none;
+}
+
+#loreBook .book {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+}
+
+#loreBook .book .bookCover {
+  width: 4rem;
+  height: 4rem;
+  margin: 0;  
+}
+
+#loreBook .book .bookCover .image {
+  position: absolute;
+  padding: 0;
+  height: 100%;
+  background-position-x: left;
+}
+
+#loreBook .book .bookTitle {
+  position: absolute;
+  top: 0.6rem;
+  left: 4rem;
+  text-align: initial;
+}
+
+#loreBook .book .hr {
+  display: none;
+}
+
+#loreBook .chapterTitle {
+  position: absolute;
+  top: 2rem;
+  left: 4rem;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: none;
+  padding: 0;
+  margin: 0;
+}
+
+#loreBook .chapterTitle::before,
+#loreBook .chapterTitle::after {
+  content: none;
+}
+
+
+
+#exotics .kind .c-1-4 .bottom {
+  position: relative;
+}
+
+.items .item {
+  flex-basis: 100%;
+  margin: 0 0 5px;
+}
 
 
 

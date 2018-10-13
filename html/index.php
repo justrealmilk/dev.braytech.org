@@ -16,10 +16,42 @@ ob_start('ob_gzhandler');
 
 <head>
 	<meta charset="UTF-8" />
-	<meta name="theme-color" content="#151e21">
+	<meta name="theme-color" content="#d8201a">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 	<meta name="generator" content="Thomas Chapman with Coffee" />
-	<title>CLOVIS BRAY</title>
+	<title>BrayTech</title>
+	<?php
+	
+	preg_match('/\/([a-zA-Z0-9._-]+)\/?.*/', $_SERVER["REQUEST_URI"], $uri);
+
+	$uri = $uri[1];
+
+	switch ($uri) {
+    case "images":
+?>
+	<meta name="og:title" content="Images">
+	<meta name="og:description" content="Rooted in the realm of light control, Thomas is captivated by the manipulation of light and its quality. He’s obsessed with what goes unnoticed around us and is pursuing documentary, nature, and physique in his photographical work.">
+	<meta name="og:image" content="https://thomchap.com.au/assets/share.jpg">
+	<meta name="og:url" content="https://braytech.org/images/">
+	<meta name="og:site_name" content="BrayTech">
+	<meta name="og:locale" content="en_AU">
+	<meta name="og:type" content="website">
+<?php
+			break;
+		default:
+?>
+	<meta name="og:title" content="BrayTech">
+	<meta name="og:description" content="Australian Guardian, justrealmilk, can't stop thinking about Destiny and enjoys meddling with CSS and JavaScript. Find here, Destiny resources including, progression checklists, Xûr's inventory, icon fonts, maybe more.">
+	<meta name="og:image" content="https://braytech.org/assets/share.jpg">
+	<meta name="og:url" content="https://braytech.org">
+	<meta name="og:site_name" content="BrayTech">
+	<meta name="og:locale" content="en_AU">
+	<meta name="og:type" content="website">
+<?php
+	}
+	
+	
+?>
 	<link rel="stylesheet" href="/assets/core.css">
 	<link rel="stylesheet" href="/assets/webfonts/neue/style.css">
 	<link rel="stylesheet" href="/assets/webfonts/destiny/style.css">
@@ -27,10 +59,6 @@ ob_start('ob_gzhandler');
 	<link rel="icon" type="image/png" href="/assets/favicon-16.png" sizes="16x16">
 	<link rel="icon" type="image/png" href="/assets/favicon-32.png" sizes="32x32">
 	<link rel="icon" type="image/png" href="/assets/favicon-96.png" sizes="96x96">
-	<meta property="og:title" content="braytech.org">
-	<meta property="og:description" content="A Destiny fan with too much free, braytech.org displays current world activities, Xûr stuff, collectibles checklists, heroic public event guides, and probably more. It's the development playground of justrealmilk, a Guardian from Australia. He enjoys tinkering with Destiny's API and having afternoon tea with Lakshmi-2.">
-	<meta property="og:url" content="https://braytech.org/">
-	<meta property="og:image" content="https://braytech.org/guides/assets/heroic-public-events/cabal-excavation/featured.jpg">
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -68,9 +96,10 @@ ob_start('ob_gzhandler');
 		<h1><a href="/"><i class="destiny-clovis_bray"></i></a></h1>
 		<a class="trigger"></a>
 		<ul>
-			<li><a href="/">Now</a></li>
+			<li><a href="/">Braytech</a></li>
 			<li><a href="/xur/">Xûr</a></li>
 			<li><a href="/progression/">Progression</a></li>
+			<li><a href="/clan/">Clan</a></li>
 			<li><a href="/creators/">Creators</a></li>
 		</ul>
 	</header>
@@ -106,6 +135,7 @@ ob_start('ob_gzhandler');
 	<script src="//cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
 	<script src="//cdnjs.cloudflare.com/ajax/libs/three.js/93/three.min.js"></script>	
 	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+	<script src="/assets/modernizr.js"></script>
 	<script src="/assets/three.js/OrbitControls.js"></script>
 	<script src="/assets/three.js/three.tgxloader.js"></script>
 	<script src="/assets/core.js"></script>

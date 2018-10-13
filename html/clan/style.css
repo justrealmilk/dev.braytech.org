@@ -1,0 +1,430 @@
+
+
+.spinner svg polygon {
+  fill: #fff;
+}
+
+header h1,
+header a {
+  color: #fff;
+}
+
+#root .bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #42434d;
+}
+
+#root .view {
+  position: absolute;
+  top: 11rem;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  display: none;
+}
+
+#root .view.active {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#root h4 {
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.mobileOnly {
+  display: none;
+}
+
+[class^="page-"] {
+  display: none;
+}
+
+[class^="page-"].active {
+  display: block;
+}
+
+.results ul li {
+  position: relative;
+  height: 38px;
+  margin: 0 0 3px;
+  display: flex;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: inset 0 0 0 1px rgba(214, 214, 214, 0);
+  font-size: 18px;
+  cursor: default;
+  transition: color .25s, background-color .25s, box-shadow .25s;
+}
+
+.results ul li::before {
+  content: " ";
+  width: 32px;
+  height: 32px;
+  margin: 0 21px 0 3px;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: background-color .25s;
+}
+
+.results ul li::after {
+  content: " ";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  z-index: 3;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px rgba(214, 214, 214, 0);
+}
+
+.results ul li:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+  color: rgba(255, 255, 255, 1);
+  z-index: 2;
+  box-shadow: inset 0 0 0 1px #d6d6d6;
+}
+
+.results ul li:hover::before {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.results ul li:hover::after {
+  box-shadow: 0 0 0 2px #d6d6d6;
+}
+
+.flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.c-1-1 {
+  flex-basis: 100%;
+}
+
+.c-1-2 {
+  flex-basis: 50%;
+}
+
+.c-1-3 {
+  flex-basis: calc(100% / 3 - 2rem);
+}
+
+.c-1-4 {
+  flex-basis: calc(100% / 4 - 2rem);
+}
+
+.c-1-6 {
+  flex-basis: calc(100% / 6 - 2rem);
+}
+
+.c-3-4 {
+  flex-basis: calc((100% / 4) * 3 - 2rem);
+}
+
+
+
+.view#search,
+.view#clan {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s;
+}
+
+#root.hasManifest #search,
+#root.hasManifest #clan {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+
+
+
+
+.view#search {
+  position: absolute;
+  top: 11rem;
+  left: 5rem;
+  width: calc(100% - 10rem);
+}
+
+#search .results ul li::before {
+  font-family: 'destiny' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 24px;
+}
+
+#search .results ul .xbox::before {
+  content: "\e999";
+}
+
+#search .results ul .playstation::before {
+  content: "\e998";
+}
+
+#search .results ul .pc::before {
+  content: "\e99e";
+}
+
+#search .player,
+#search .group {
+  width: 474px;
+  margin: 0 3rem 0 0;
+}
+
+#search .group .results ul li {
+  height: initial;
+  flex-flow: row wrap;
+}
+
+#search .group .results ul li::before {
+  content: none;
+}
+
+#search .group .results ul li .header {
+  padding: 0.8rem 1rem;
+  flex-basis: calc(100% - 2rem);
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#search .group .results ul li .header::after {
+  content: attr(data-members);
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.8rem 1rem;
+  line-height: 1.4;
+  font-size: 16px;
+}
+
+#search .group .results ul li .header p {
+  margin: 0;
+  font-size: 16px;
+}
+
+#search .group .results ul li .header p:last-child {
+  font-style: italic;
+}
+
+#search .group .results ul li .about {
+  padding: 0.8rem 1rem;
+  flex-basis: calc(100% - 2rem);
+}
+
+#search .group .results ul li .about p {
+  font-size: 14px;
+}
+
+
+
+#clan .group,
+#clan .roster {
+  flex-basis: 100%;
+  margin: 0 5rem 4rem;
+  width: 100%;
+}
+
+
+
+
+
+#clan .group h2 {
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1.2;
+  margin: 0 0 0.4rem;
+}
+
+#clan .group .motto {
+  font-style: italic;
+  margin: 0 0 4rem;
+}
+
+#clan .group .about {
+  margin: 0 4rem 0 0;
+  font-size: 14px;
+}
+
+#clan .group .big {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+
+
+
+
+
+
+#clan .roster .member,
+#clan .roster .header {
+  position: relative;
+  height: 28px;
+  margin: 0 0 3px;
+  display: flex;
+  flex-flow: row wrap;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 18px;
+  cursor: default;
+}
+
+#clan .roster .member {
+  opacity: 0.4;
+}
+
+#clan .roster .member.online {
+  opacity: 1;
+}
+
+#clan .roster .col {
+  flex-basis: calc(100% / 6.5);
+  display: flex;
+  align-items: center;
+}
+
+#clan .roster .header {
+  margin: 0 0 1rem;
+}
+
+#clan .roster .header .col {
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#clan .roster .member .col {
+  font-size: 14px;
+}
+
+#clan .roster .col:last-child {
+  flex-basis: calc((100% / 6.5) * 1.5);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media screen and (max-width: 1024px) {
+
+
+[class^="page-"] {
+  display: block;
+}
+
+.c-1-2,
+.c-1-3,
+.c-1-4,
+.c-1-6,
+.c-3-4 {
+  flex-basis: 100% !important;
+  margin: 0 0 1rem !important;
+}
+
+#root .view {
+  position: relative;
+  top: initial;
+  left: initial;
+  width: calc(100% - 4rem);
+  margin: 3rem 2rem 0;
+}
+
+#search .player,
+#search .group {
+  width: 100%;
+  margin: 0 0 2rem;
+}
+
+
+#clan .group,
+#clan .roster {
+  margin: 0 0 1rem;
+}
+
+
+
+#clan .group h2 {
+  font-size: 2rem;
+}
+
+#clan .group .about {
+  margin: 0 0 4rem !important;
+}
+
+#clan .group .c-1-6 {
+  flex-basis: 50% !important;
+  margin: 0 0 3rem !important;
+}
+
+#clan .roster .header {
+  display: none;
+}
+
+#clan .roster .member {
+  height: inherit;
+  margin: 0 0 24px;
+}
+
+#clan .roster .member .col:nth-child(2),
+#clan .roster .member .col:nth-child(5) {
+  display: none;
+}
+
+#clan .roster .member .col:first-child {
+  flex-basis: 50%;
+  margin: 0 0 6px;
+  font-weight: 500;
+}
+
+#clan .roster .member .col:nth-child(3) {
+  flex-basis: 3rem;
+}
+
+#clan .roster .member .col:nth-child(4) {
+  flex-basis: calc(50% - 3rem);
+}
+
+#clan .roster .member .col:last-child {
+  flex-basis: 100%;
+  margin: 6px 0 0;
+}
+
+
+
+}

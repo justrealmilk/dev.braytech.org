@@ -299,6 +299,10 @@ header a {
   margin: 1rem 0 0;
 }
 
+.api .key-use pre code span:last-child {
+  font-weight: 600;
+}
+
 
 @media screen and (max-width: 500px) {
 

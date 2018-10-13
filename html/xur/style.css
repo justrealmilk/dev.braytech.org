@@ -27,6 +27,14 @@ header a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1)
 }
 
+.frame h4 {
+  text-transform: uppercase;
+  font-size: 15px;
+  letter-spacing: 2px;
+  margin: 0 0 2rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
 .frame h3:nth-child(n+2) {
   margin: 2rem 0 2rem;
 }
@@ -36,10 +44,10 @@ header a {
 
 .vendor {
   position: fixed;
-  top: 7rem;
+  top: 11rem;
   left: 5rem;
   width: 25rem;
-  height: calc(100% - 7rem - 5rem);
+  height: calc(100% - 11rem - 5rem);
 }
 
 .vendor::after {
@@ -73,9 +81,9 @@ header a {
 
 .history {
   position: absolute;
-  top: 7rem;
+  top: 11rem;
   left: 35rem;
-  width: calc(7rem + ((48px + 6px) * 4) - 6px);
+  width: calc(7rem + 2rem + 14rem + ((48px + 6px) * 4) - 6px);
 }
 
 .weeks {
@@ -85,25 +93,15 @@ header a {
 .weeks .week {  
   position: relative;
   margin: 0 0 1rem;
-}
-
-.weeks .week::before {
-  content: "Week " attr(data-week);
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
-  font-size: 12px;
-  text-transform: uppercase;
-  opacity: 0.4;
 }
 
 .week .items {
   line-height: 0;
   display: inline-block;
-  margin: 0 0 0 7rem;
+  flex-basis: calc(((48px + 6px) * 4) - 6px);
 }
 
 .week .items .item {
@@ -122,6 +120,110 @@ header a {
   box-shadow: inset 0 0 0 2px #d9d9d9;
 }
 
+.weeks .this {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  opacity: 0.6;
+  flex-basis: 7rem;
+}
+
+.weeks .location {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  font-size: 12px;
+  text-transform: uppercase;
+  padding: 0 0 0 2rem;
+  flex-basis: 10rem;
+}
+
+.weeks .location div {
+  flex-basis: 100%;
+  opacity: 0.6;
+}
+
+.weeks .location div:last-child {
+  opacity: 0.4;
+  margin: 0.4rem 0 0;
+}
+
+
+
+
+.notleft {
+  position: absolute;
+  top: 11rem;
+  left: calc(35rem + 7rem + 2rem + 10rem + ((48px + 6px) * 4) - 6px + 5rem);
+  width: calc(100vw - 10rem - (35rem + 7rem + 2rem + 10rem + ((48px + 6px) * 4) - 6px));
+}
+
+.latest .highlight {
+  position: relative;
+}
+
+.latest .highlight .item {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+}
+
+.highlight .item div:first-child {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  opacity: 0.9;
+}
+
+.latest .highlight .item div:last-child {
+  opacity: 0.4;
+  margin: 0.4rem 0 0;
+}
+
+.latest .canvas {
+  height: 20rem;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+.neverstocked {
+  margin: 5rem 0 0;
+}
+
+.neverstocked .text {
+  max-width: 30rem;
+  font-size: 0.9rem;
+  margin: 0 0 2rem;
+}
+
+.neverstocked .items {
+  line-height: 0;
+  display: inline-block;
+  flex-basis: calc(((48px + 6px) * 4) - 6px);
+}
+
+.neverstocked .items .item {
+  display: inline-block;
+  margin: 0 6px 6px 0;
+}
+
+.neverstocked .items .item .image {
+  position: relative;
+  width: 48px;
+  height: 48px;
+  box-shadow: inset 0 0 0 2px #d9d9d9;
+}
+
+.neverstocked .items .item.nonWorldDrop .image {
+  opacity: 0.4;
+}
+
+
+
 
 
 @media screen and (max-width: 500px) {
@@ -136,6 +238,7 @@ header a {
   left: 2rem;
   width: calc(100% - 4rem);
   height: 20rem;
+  top: 7rem;
 }
 
 .history {
@@ -144,4 +247,273 @@ header a {
   width: calc(100% - 4rem);
 }
 
+.weeks .this,
+.weeks .items,
+.weeks .location {
+  flex-basis: 100%;
+  padding: 0;
+  margin: 0 0 1rem;
 }
+
+}
+
+
+
+
+
+
+
+
+#inspector {
+  position: fixed;
+  width: 24rem;
+  z-index: 2000;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity .2s;
+}
+
+#inspector.active {
+  opacity: 1;
+}
+
+#inspector .acrylic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: brightness(1.2) blur(2px);
+}
+
+#inspector .frame {
+  position: relative;
+}
+
+#inspector .header {
+  padding: 0.6rem 1rem;
+  background-color: rgba(var(--basic),0.9);
+  color: #fff;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#inspector .header.exotic {
+  background-color: rgba(var(--exotic),0.9);
+}
+
+#inspector .header > div {
+  flex-basis: 100%;
+  display: flex;
+}
+
+#inspector .header div div {
+  flex: 1 1 auto;
+}
+
+#inspector .header .name {
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+#inspector .header .kind {
+  opacity: 0.8;
+}
+
+#inspector .header .rarity {
+  opacity: 0.4;
+  text-align: right;
+}
+
+#inspector .black {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+#inspector .damage {
+  padding: 1rem;
+  color: #fff;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#inspector .damage .power {
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;  
+  padding: 0 1rem 0 0;
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#inspector .damage .power .text {
+  font-size: 2.4rem;
+  padding: 0 0 0 0.4rem;
+  line-height: 0;
+}
+
+#inspector .damage .power.solar {
+  color: #ef641f;
+}
+
+#inspector .damage .power.arc {
+  color: #79bbe7;
+}
+
+#inspector .damage .power.void {
+  color: #a371c2;
+}
+
+#inspector .damage.armor .power {
+  border-right: none;
+}
+
+#inspector .damage.armor .power .text {
+  padding: 0;
+  line-height: 1;
+}
+
+#inspector .damage.armor .power .text:last-child {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  padding: 0 0 0 1rem;
+  line-height: 0;
+}
+
+#inspector .damage .slot {
+  padding: 0 0 0 1rem;
+  display: flex;
+  align-items: center;
+}
+
+#inspector .damage .slot .icon {
+  font-size: 2rem;
+}
+
+#inspector .damage .slot .text {
+  padding: 0 0 0 0.6rem;
+  text-transform: uppercase;
+}
+
+#inspector .source {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  font-style: italic;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+#inspector .stats {
+  padding: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+#inspector .stats .stat {
+  display: flex;
+  align-items: center;
+  line-height: 1.6;
+  margin: 0 0 6px;
+}
+
+#inspector .stats .stat .name {
+  color: rgba(255,255,255, 0.8);
+  padding: 0 1rem 0 0;
+  flex-basis: 45%;
+  height: 18px;  
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#inspector .stats .stat .value {
+  flex-basis: calc(55% - 1rem);
+  height: 18px;
+  position: relative;
+  color: #fff;
+}
+
+#inspector .stats .stat .value.bar {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#inspector .stats .stat .value.int {
+  display: flex;
+  align-items: center;
+}
+
+#inspector .stats .stat .value .bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background-color: #fff;
+}
+
+#inspector .stats .stat .value .bar::before {
+  content: attr(data-value);
+  position: absolute;
+  top: 0;
+  right: -1rem;
+  width: 100%;
+  height: 100%;
+  font-weight: 400;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  opacity: 0.4;
+}
+
+#inspector .sockets.hasTraits {
+  padding: 0 0 1rem;
+}
+
+#inspector .plug {
+  padding: 1rem 1rem 0;
+  display: flex;
+}
+
+#inspector .plug .icon {
+  position: relative;
+  width: 2.6rem;
+  height: 2.6rem;
+  flex-basis: 2.6rem;
+  background-size: contain;
+}
+
+#inspector .plug .text {
+  flex-basis: calc(100% - 3.6rem);
+  padding: 0 0 0 1rem;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#inspector .plug .text .name {
+  text-transform: uppercase;
+  margin: 0 0 0.2rem;
+}
+
+#inspector .plug .text .description {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+#inspector .intrinsic {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+}
+
+#inspector .intrinsic .text .name {
+  color: rgba(var(--exotic),1);
+}
+
+
+
+
+
+
+
+
+

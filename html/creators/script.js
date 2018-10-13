@@ -36,6 +36,30 @@ domain.creators.init = () => {
       "name": "Warlock"
     },
     {
+      "entity": "e997",
+      "name": "Gambit"
+    },
+    {
+      "entity": "e9a6",
+      "name": "Gambit bank"
+    },
+    {
+      "entity": "e9a5",
+      "name": "Gambit mote"
+    },
+    {
+      "entity": "e9a8",
+      "name": "Gambit hostiles"
+    },
+    {
+      "entity": "e9a9",
+      "name": "Gambit invasions"
+    },
+    {
+      "entity": "e9a4",
+      "name": "Ghost"
+    },
+    {
       "entity": "e973",
       "name": "Power"
     },
@@ -50,6 +74,10 @@ domain.creators.init = () => {
     {
       "entity": "e996",
       "name": "Strikes"
+    },
+    {
+      "entity": "e9a2",
+      "name": "Patrol"
     },
     {
       "entity": "e903",
@@ -128,6 +156,10 @@ domain.creators.init = () => {
       "name": "Spider"
     },
     {
+      "entity": "e9a3",
+      "name": "SRL"
+    },
+    {
       "entity": "e989",
       "name": "Future War Cult"
     },
@@ -184,10 +216,6 @@ domain.creators.init = () => {
       "name": "Clan"
     },
     {
-      "entity": "e997",
-      "name": "Gambit"
-    },
-    {
       "entity": "e99d",
       "name": "Forsaken"
     },
@@ -218,6 +246,10 @@ domain.creators.init = () => {
     {
       "entity": "e96b",
       "name": "Clovis Bray device"
+    },
+    {
+      "entity": "e909",
+      "name": "Destiny"
     },
     {
       "entity": "e969",

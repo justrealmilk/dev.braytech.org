@@ -24,7 +24,7 @@ var apiKey = {
 var timed = false;
 var index = {
 	"s": false,
-	"d": "now"
+	"d": "braytech"
 };
 
 window.addEventListener("scroll", () => {
@@ -45,7 +45,7 @@ domain.state = () => {
 
 document.addEventListener("visibilitychange", () => {
 	if (document.hidden) {
-    document.title = "CLOVIS BRAY";
+    document.title = "BrayTech";
   } else  {
     var nn = domain.state().d;
 		nn = nn.replace(/[_]/g, " ");
@@ -133,7 +133,7 @@ domain.rim = function(g) {
 	$("html").removeClass("stateChange");
 
 	$(`header ul li a`).removeClass("active");
-	if (domain.state().d == "now") {
+	if (domain.state().d == "braytech") {
 		$(`header ul li a[href="/"]`).addClass("active");
 	}
 	else {

@@ -1,9 +1,9 @@
 @font-face {
   font-family: 'destiny';
   src:
-    url('destiny.ttf?al3g7b') format('truetype'),
-    url('destiny.woff?al3g7b') format('woff'),
-    url('destiny.svg?al3g7b#destiny') format('svg');
+    url('destiny.ttf?uee3bk') format('truetype'),
+    url('destiny.woff?uee3bk') format('woff'),
+    url('destiny.svg?uee3bk#destiny') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,6 +23,42 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.destiny-ammo_heavy:before {
+  content: "\e9ab";
+  color: #a981fc;
+}
+.destiny-ammo_primary:before {
+  content: "\e9ac";
+  color: #fff;
+}
+.destiny-ammo_special:before {
+  content: "\e9ad";
+  color: #84f186;
+}
+.destiny-ace_of_spades:before {
+  content: "\e9aa";
+}
+.destiny-srl:before {
+  content: "\e9a3";
+}
+.destiny-ghost:before {
+  content: "\e9a4";
+}
+.destiny-gambit_hostiles:before {
+  content: "\e9a8";
+}
+.destiny-gambit_invasions:before {
+  content: "\e9a9";
+}
+.destiny-gambit_mote:before {
+  content: "\e9a5";
+}
+.destiny-gambit_bank:before {
+  content: "\e9a6";
+}
+.destiny-gambit_dazzle:before {
+  content: "\e9a7";
+}
 .destiny-platform_pc:before {
   content: "\e99e";
 }
@@ -302,6 +338,9 @@
 }
 .destiny-strike:before {
   content: "\e996";
+}
+.destiny-patrol:before {
+  content: "\e9a2";
 }
 .destiny-ishtar:before {
   content: "\e90d";

@@ -17,6 +17,14 @@
     </div>
     <div class="form">
       <div class="header">
+        <div class="text">Ask justrealmilk on Twitter for an API key.</div>
+        <div class="field" style="opacity:0;pointer-events:none">
+          <button>Start</button>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="form">
+      <div class="header">
         <div class="text">Generate an API key</div>
         <div class="field">
           <button>Start</button>
@@ -35,7 +43,7 @@
           <button>Request</button>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="key-use">
       <p>Use the key in the same manner you would for Bungie's API.</p>
       <p>Send it with your headers as the value to X-Api-Key.</p>

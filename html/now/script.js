@@ -15,7 +15,7 @@ domain.now.init = () => {
   var challenges = $.ajax({
     url: "https://api.braytech.org/?request=challenges",
     method: "get",
-    cache: true,
+    cache: false,
     dataType: "json",
     headers: {
       "X-Api-Key": apiKey.braytech
@@ -25,7 +25,7 @@ domain.now.init = () => {
   var spider = $.ajax({
     url: "https://api.braytech.org/?request=vendor&hash=863940356,672118013",
     method: "get",
-    cache: true,
+    cache: false,
     dataType: "json",
     headers: {
       "X-Api-Key": apiKey.braytech
@@ -113,6 +113,7 @@ domain.now.render = () => {
     case "mars": var themeColor = "#ea603e"; break;
     case "titan": var themeColor = "#256f68"; break;
     case "io": var themeColor = "#cdc36a"; break;
+    case "nessus": var themeColor = "#32958b"; break;
     default: var themeColor = "#929292"; break;
   }
   
